@@ -9,8 +9,8 @@ This project explores the equations of the thin disk accretion model, considered
   
 ### Key Concepts
   
-#### Accretion
-  Gravitational forces from massive objects pull things inwards. Accretion is what happens when matter actually falls on to the central object. In a lot of cases, due to conservation of angular momentum and friction forces, the matter will organize itself into a disk as it falls inwards, called an **accretion disk**[<sup>(source)](https://en.wikipedia.org/wiki/Accretion_disk).
+> #### Accretion
+> Gravitational forces from massive objects pull things inwards. Accretion is what happens when matter actually falls on to the central object. In a lot of cases, due to conservation of angular momentum and friction forces, the matter will organize itself into a disk as it falls inwards, called an **accretion disk**[<sup>(source)](https://en.wikipedia.org/wiki/Accretion_disk).
 
   
 ### Current Status
