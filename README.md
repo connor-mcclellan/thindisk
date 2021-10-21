@@ -9,13 +9,17 @@
   
 ### Current Status
   
-  Student researchers are developing skills in Python that will be used to visualize the radial structure of the thin accretion disk. 
+  Student researchers are extending their Python skills by adding units to the code and changing the physical parameters of the model (black hole mass, mass accretion rate, interior radius) to see their effects on the radial flux profile.
+  
+### Recent Progress
+  
+  Students developed skills in Python, creating plots of the radial flux profile of an accretion disk using the thin disk equations.
   
 ### Key Concepts
   
 > #### Accretion
 > Gravitational forces from massive objects pull things inwards. Accretion is what happens when matter actually falls on to the central object. In a lot of cases, due to conservation of angular momentum and friction forces, the matter will organize itself into a disk as it falls inwards, called an **accretion disk**[<sup>(source)](https://en.wikipedia.org/wiki/Accretion_disk).
-
+  
 ### Tools
 
   > #### git
