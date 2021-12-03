@@ -1,0 +1,63 @@
+
+disk.out1.18000.athdf -- Athena++ simulation snapshot of a 6.62 solar mass
+		      	 BH with an initial condition torus set far away
+			 from the BH (80 gravitational radii or something)
+			 and they let the sim run and form the accretion
+			 disk near the center. You're looking edge-on in
+			 this snapshot.
+
+			 Quantities
+			      - rho: Density
+			      - press: Pressure (I think it's gas pressure?)
+			      - Er: Radiation energy density
+			      - Fr1, Fr2, Fr3
+			      - Pr11, Pr22, Pr33, Pr12, 13, 23, 31, 32
+			      	These are the radiation pressure tensor matrix
+				elements (11, 22, 33 are the diagonal)
+			      - Er0: Not really sure
+			      - Fr01, Fr02, Fr03: radiation flux tensor 
+			      	components. I know one is rphi, not sure what
+				the others are.
+			      - Sigma_a, Sigma_s: I'm not sure, but if I had
+			      	to guess it's the absorption and scattering
+				cross-sections but don't quote me
+
+diskmc.out1.00001.athdf -- I ran Shane's Monte Carlo code on the 
+			   disk.out1.18000.athdf snapshot, but we zoomed in
+			   and only look at the inner ~26 gravitational radii
+			   which is where the accretion disk itself is.
+			   
+			   Quantities
+			       - tgas: Gas temperature
+			       - rho: Density
+			       - Ermc: Radiation energy density
+			       - Frmc1: Radiation Flux **I forget which 
+			       	 	components of the radiation flux tensor
+					these are. I know One of them is r-phi,
+					and the others are something. I can
+					find out if you need them.
+			       - Frmc2: Radiation Flux ^
+			       - Frmc3: Radiation Flux ^
+			       - Prmc11, Prmc22, Prmc33, 12, 13, 23 ,21, 31, 32
+			       	 These are the radiation pressure tensor matrix
+				 elements (11, 22, 33 are the diagonal)
+			       - Eavemc: Essentially <h*nu>
+			       - kapjmc: J-mean intensity opacity ("kappa_J")
+			       
+
+Using plot_spherical.py to plot things like the density and temperature
+      ***Note: Use python2 when plotting. If you use Python3 you'll get a 
+      	 "coordinates not recognized" error because of the way it reads 
+	 string characters
+
+For all the input variables and kwargs, do python2 plot_spherical.py -h
+
+---------Examples----------
+python2 plot_spherical.py diskmc.out1.00001.athdf rho testmc_rho.png --logc --vmin 1e-7 --vmax 1
+
+python2 plot_spherical.py diskmc.out1.00001.athdf tgas testmc_tgas.png --logc
+
+python2 plot_spherical.py disk.out1.18000.athdf Er test_ermc.png --logc
+
+python2 plot_spherical.py diskmc.out1.00001.athdf Ermc testmc_ermc.png --logc --vmin 1e13
+
