@@ -19,7 +19,7 @@ file, including combinations of multiple quantities.
 
 Requires scipy if making streamplot.
 """
-
+import pdb
 # Python standard modules
 import argparse
 import warnings
@@ -149,9 +149,9 @@ def main(**kwargs):
   # Perform slicing/averaging of scalar data
   if kwargs['midplane']:
     if nx2%2 == 0:
-      vals = np.mean(data[kwargs['quantity']][:,nx2/2-1:nx2/2+1,:], axis=1)
+      vals = np.mean(data[kwargs['quantity']][:,int(nx2/2)-1:int(nx2/2)+1,:], axis=1)
     else:
-      vals = data[kwargs['quantity']][:,nx2/2,:]
+      vals = data[kwargs['quantity']][:,int(nx2/2),:]
     if kwargs['average']:
       vals = np.repeat(np.mean(vals, axis=0, keepdims=True), nx3, axis=0)
   else:
@@ -162,7 +162,7 @@ def main(**kwargs):
       vals_right = \
           0.5 * (data[kwargs['quantity']][-1,:,:] + data[kwargs['quantity']][0,:,:])
       vals_left = 0.5 \
-          * (data[kwargs['quantity']][nx3/2-1,:,:] + data[kwargs['quantity']][nx3/2,:,:])
+          * (data[kwargs['quantity']][int(nx3/2)-1,:,:] + data[kwargs['quantity']][int(nx3/2),:,:])
 
   # Join scalar data through boundaries
   if kwargs['midplane']:
@@ -279,16 +279,24 @@ def main(**kwargs):
       else:
         plt.streamplot(x_stream, z_stream, vals_x.T, vals_z.T, \
             density=kwargs['stream_density'], color='k')
-  plt.gca().set_aspect('equal')
-  plt.xlim((-r_max, r_max))
-  plt.ylim((-r_max, r_max))
-  r_string = r'\log_{10}(r)\ ' if kwargs['logr'] else r'r\ '
-  angle_string_x = r'\cos(\phi)' if kwargs['midplane'] else r'\sin(\theta)'
-  angle_string_y = r'\sin(\phi)' if kwargs['midplane'] else r'\cos(\theta)'
-  plt.xlabel('$'+r_string+angle_string_x+'$')
-  plt.ylabel('$'+r_string+angle_string_y+'$')
-  plt.colorbar(im)
-  plt.savefig(kwargs['output_file'], bbox_inches='tight')
+
+  if kwargs['midplane']:
+    plt.plot(r, vals[0])
+    plt.yscale('log')
+    plt.ylabel(kwargs['quantity'])
+    plt.xlabel('r')
+    plt.savefig(kwargs['output_file'], bbox_inches='tight')
+  else:
+    plt.gca().set_aspect('equal')
+    plt.xlim((-r_max, r_max))
+    plt.ylim((-r_max, r_max))
+    r_string = r'\log_{10}(r)\ ' if kwargs['logr'] else r'r\ '
+    angle_string_x = r'\cos(\phi)' if kwargs['midplane'] else r'\sin(\theta)'
+    angle_string_y = r'\sin(\phi)' if kwargs['midplane'] else r'\cos(\theta)'
+    plt.xlabel('$'+r_string+angle_string_x+'$')
+    plt.ylabel('$'+r_string+angle_string_y+'$')
+    plt.colorbar(im)
+    plt.savefig(kwargs['output_file'], bbox_inches='tight')
 
 # Execute main function
 if __name__ == '__main__':
