@@ -26,7 +26,7 @@ import warnings
 
 # Python plotting modules
 import matplotlib
-matplotlib.use('agg')
+#matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 
@@ -280,13 +280,16 @@ def main(**kwargs):
         plt.streamplot(x_stream, z_stream, vals_x.T, vals_z.T, \
             density=kwargs['stream_density'], color='k')
 
+  ## ADDED BY CONNOR ##
   if kwargs['midplane']:
     plt.plot(r, vals[0])
     plt.yscale('log')
     plt.ylabel(kwargs['quantity'])
     plt.xlabel('r')
-    plt.savefig(kwargs['output_file'], bbox_inches='tight')
+#    plt.savefig(kwargs['output_file'], bbox_inches='tight')
+    plt.show()
   else:
+  ## =============== ##
     plt.gca().set_aspect('equal')
     plt.xlim((-r_max, r_max))
     plt.ylim((-r_max, r_max))
