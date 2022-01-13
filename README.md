@@ -9,9 +9,11 @@
   
 ### Current Status
   
-  Student researchers are extending their Python skills by adding units to the code and changing the physical parameters of the model (black hole mass, mass accretion rate, interior radius) to see their effects on the radial flux profile.
+  Student researchers are performing data reduction on a 3-D simulation of a black hole accretion disk to extract radial profiles of the gas density, temperature, and energy density. These will be compared with the analytic model.
   
 ### Recent Progress
+  
+  Student researchers extended their Python skills by adding units to the code and changing the physical parameters of the model (black hole mass, mass accretion rate, interior radius) to see their effects on the radial flux profile.
   
   Students developed skills in Python, creating plots of the radial flux profile of an accretion disk using the thin disk equations.
   
