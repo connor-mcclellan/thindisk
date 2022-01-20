@@ -283,7 +283,7 @@ def main(**kwargs):
   ## ADDED BY CONNOR ##
   if kwargs['midplane']:
     plt.plot(r, vals[0], marker='o', ms=1)
-    #plt.yscale('log')
+    plt.yscale('log')
     plt.ylabel(kwargs['quantity'])
     plt.xlabel('r')
 #    plt.savefig(kwargs['output_file'], bbox_inches='tight')
