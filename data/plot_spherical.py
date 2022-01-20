@@ -282,12 +282,13 @@ def main(**kwargs):
 
   ## ADDED BY CONNOR ##
   if kwargs['midplane']:
-    plt.plot(r, vals[0])
-    plt.yscale('log')
+    plt.plot(r, vals[0], marker='o', ms=1)
+    #plt.yscale('log')
     plt.ylabel(kwargs['quantity'])
     plt.xlabel('r')
 #    plt.savefig(kwargs['output_file'], bbox_inches='tight')
     plt.show()
+    np.save('exported_data_{}.npy'.format(kwargs['quantity']), np.array([r, vals[0]]))
   else:
   ## =============== ##
     plt.gca().set_aspect('equal')
